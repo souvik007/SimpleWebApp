@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript"
+        src="webjars/jquery/3.4.1/jquery.min.js"></script>
+<script src="myScript.js"></script>
+</head>
+<body>
+	<div id="logInDiv">
+		<label>login</label> <br> <br> <label>User Name</label> <input
+			name="userName" id="userName" type="text"> <br> <br>
+		<label>Password</label> <input name="passWord" id="passWord" type="password"> <br> <br> 
+		<button id="login">Log In</button>  <button id="signup">Sign Up</button><br><br>
+		<p id="forgetPassword"> forget password </p>
+    </div>
+	<br>
+	
+	<div id="signUpDiv" hidden="true">
+		<div>
+			<label>Id</label><input type="text" id ="Id"><br><br>
+			<label>Name</label><input type="text" id = "Name"><br><br>
+			<label>Email</label><input type="text" id = "Email"><br><br>
+			<label>Password</label><input type="password" id = "Password"><br><br>
+			<label>Security Question</label>
+			<select id="SQues">
+				<option value="What is your birth city?">What is your birth city?</option>
+				<option value="Who is your favourite actor?">Who is your favourite actor?</option>
+				<option value="What is your favourite number?">What is your favourite number?</option>
+				<option value="What is your favourite food?">What is your favourite food?</option>
+			</select>
+			<br><br>
+			<label>Answer</label><input type="text" id = "SAnswer"><br><br>
+			<button id="register">Register</button>
+		</div>
+	</div>
+	<div id="userDetailsDiv" hidden="true">
+			<label>Id</label><label id="id"></label><br><br>
+			<label>Name</label><label id="name"></label><br><br>
+			<label>Email</label><label id="email"></label><br><br>
+			<button id="changePassword">Change Password </button>      <button id="logOut" >Log Out</button>
+	</div>
+    <div id="forgetPasswordDiv" hidden="true">
+    	<label>User Name</label> <input
+			name="userName" id="userNameF" type="text"> <br> <br>
+		<label>Security Question</label>
+		<select id="SQuesF">
+			<option value="What is your birth city?">What is your birth city?</option>
+			<option value="Who is your favourite actor?">Who is your favourite actor?</option>
+			<option value="What is your favourite number?">What is your favourite number?</option>
+			<option value="What is your favourite food?">What is your favourite food?</option>
+		</select>
+		<br><br>
+		<label>Answer</label><input type="text" id = "SAnswerF"><br><br>
+		<button id="submitF">Next</button>		
+    </div>
+    <div id="generateNewPasswordDiv" hidden="true">
+    	<label>New Password</label><input type="password" id = "Password"><br><br>
+    	<label>Confirm Password</label><input type="password" id = "Password"><br><br>
+ 		<button id="submitGen">Submit</button>
+    </div>
+    <div id="searchDiv" hidden="true">
+    	<label>Search with</label>
+    	<select id="searchSelect">
+			<option value="name">Name</option>
+			<option value="email">Email</option>
+			<option value="id">User Id</option>
+		</select>
+		<input id="searchBar" type="text">
+		<br><br>
+		<button id="search">Search</button>
+    </div>
+</body>
+</html>
