@@ -1,9 +1,10 @@
 package com.souvy.app.controller;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.Errors;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.souvy.app.model.LogIn;
 import com.souvy.app.model.SignUp;
+import com.souvy.app.model.User;
 import com.souvy.app.model.UserDetails;
 import com.souvy.app.model.UserLogin;
 
@@ -24,14 +26,26 @@ public class Controller {
 	@Autowired
 	LogIn login;
 	@RequestMapping("/")
-	public String load() {
+	public String load(HttpSession httpSession) {
+		System.out.println(httpSession.hashCode());
 		return "home";
+	}
+	
+	@PostMapping("checkloginexist")
+	@ResponseBody
+	public ResponseEntity<User> checkLoginExist(HttpSession httpSession) throws JsonProcessingException {
+		
+		System.out.println(httpSession.hashCode());
+		System.out.println("in signup");
+		return (login.loadExistUser(httpSession));
+		
 	}
 	
 	@PostMapping("signup")
 	@ResponseBody
-	public String signUp(@RequestBody UserDetails user) throws JsonProcessingException {
+	public String signUp(@RequestBody UserDetails user,HttpSession httpSession) throws JsonProcessingException {
 		String response;
+		System.out.println(httpSession.hashCode());
 		System.out.println("in signup");
 		System.out.println(user);
 		response = new ObjectMapper().writeValueAsString(signUp.newUser(user));
@@ -40,10 +54,12 @@ public class Controller {
 	
 	@PostMapping("login")
 	@ResponseBody
-	public String home(@Valid @RequestBody UserLogin userLog, Errors error) throws JsonProcessingException {
-		String response = login.signIn(userLog);
-		System.out.println(response);
-		return response;
+	public ResponseEntity<User> home(@Valid @RequestBody UserLogin userLog, HttpSession httpSession) throws JsonProcessingException {
+		
+		System.out.println(httpSession.hashCode());
+		//String response = login.signIn(userLog);
+		//System.out.println(response);
+		return login.signIn(userLog,httpSession);
 	}
 
 	

@@ -1,7 +1,30 @@
 $(function() {
-	//alert("loaded");
+	alert("loaded");
 	var user;
 	
+	$.ajax({
+        url: "checkloginexist",
+        type:"POST",
+        dataType: 'json',
+        contentType: "application/json; charset=utf-8",
+        cache: false,
+        timeout: 500000,
+        success: function(data) {
+//        	alert(data.id);
+//        	alert(data.status);
+        	
+        	$("#logInDiv").hide();
+        	$("#userDetailsDiv").show();
+        	$("label#id").text(":   "+data.id);
+        	$("label#name").text(":   "+data.name);
+        	$("label#email").text(":   "+data.email);
+        	
+        },
+        error: function(e){
+        	$("#logInDiv").show();
+        	alert("not logged in");
+        }
+    });
 	
 	$("#login").click(function() {
 		var uN= $("#userName").val();
@@ -21,13 +44,24 @@ $(function() {
             cache: false,
             timeout: 500000,
             success: function(data) {
-            	alert(data.id);
+//            	alert(data.id);
+//            	alert(data.status);
+            	
             	$("#logInDiv").toggle();
             	$("#userDetailsDiv").toggle();
             	$("label#id").text(":   "+data.id);
             	$("label#name").text(":   "+data.name);
             	$("label#email").text(":   "+data.email);
             	
+            },
+            error: function(e){
+            	alert(e.responseJSON.id);
+            	if(e.responseJSON.id=="not"){
+            		alert("Wrong Username");
+            	}
+            	else if (e.responseJSON.id=="Wrong Password"){
+            		alert("Wrong Password");
+            	}
             }
         });
 		
@@ -44,7 +78,7 @@ $(function() {
 		var uId= $("#Id").val();
 		var uName = $("#Name").val();
 		var uEmail= $("#Email").val();
-		var uPass= $("#Password").val();
+		var uPass= $("#PasswordSign").val();
 		var uSQues= $("#SQues").children("option").filter(":selected").val();
 		var uSAns= $("#SAnswer").val();
 		var userInfo = JSON.stringify({
