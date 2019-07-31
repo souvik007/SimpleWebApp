@@ -8,6 +8,9 @@
 <script src="myScript.js"></script>
 </head>
 <body>
+
+
+
 	<div id="logInDiv">
 		<label>login</label> <br> <br> <label>User Name</label> <input
 			name="userName" id="userName" type="text"> <br> <br>
@@ -16,6 +19,8 @@
 		<p id="forgetPassword"> forget password </p>
     </div>
 	<br>
+	
+	
 	
 	<div id="signUpDiv" hidden="true">
 		<div>
@@ -35,12 +40,20 @@
 			<button id="register">Register</button>
 		</div>
 	</div>
+	
+	
+	
+	
 	<div id="userDetailsDiv" hidden="true">
 			<label>Id</label><label id="id"></label><br><br>
 			<label>Name</label><label id="name"></label><br><br>
 			<label>Email</label><label id="email"></label><br><br>
+			<label>Department</label><label id="department"></label><br><br>
 			<button id="changePassword">Change Password </button>      <button id="logOut" >Log Out</button>
 	</div>
+	
+	
+	
     <div id="forgetPasswordDiv" hidden="true">
     	<label>User Name</label> <input
 			name="userName" id="userNameF" type="text"> <br> <br>
@@ -55,21 +68,26 @@
 		<label>Answer</label><input type="text" id = "SAnswerF"><br><br>
 		<button id="submitF">Next</button>		
     </div>
+    
+    
     <div id="generateNewPasswordDiv" hidden="true">
     	<label>New Password</label><input type="password" id = "PasswordN"><br><br>
     	<label>Confirm Password</label><input type="password" id = "PasswordNC"><br><br>
  		<button id="submitGen">Submit</button>
     </div>
+    
+    
     <div id="searchDiv" hidden="true">
+    	<label>Search other user</label>
     	<label>Search with</label>
     	<select id="searchSelect">
-			<option value="name">Name</option>
+			<option value="departemnt">Department</option>
 			<option value="email">Email</option>
-			<option value="id">User Id</option>
 		</select>
 		<input id="searchBar" type="text">
 		<br><br>
 		<button id="search">Search</button>
+		<div id="searchResult"></div>
     </div>
 </body>
 </html>

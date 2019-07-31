@@ -1,7 +1,13 @@
-package com.souvy.app.model;
+package com.souvy.app.model.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.souvy.app.model.User;
+import com.souvy.app.model.UserDetails;
+import com.souvy.app.model.UserLogin;
+import com.souvy.app.model.UserLoginRepo;
+import com.souvy.app.model.UserRepo;
 
 @Component
 public class SignUp {
@@ -19,6 +25,7 @@ public class SignUp {
 		user.setName(userDetails.getName());
 		user.setsQues(userDetails.getsQues());
 		user.setsAns(userDetails.getsAns());
+		user.setDepartment(userDetails.getDepartment());
 		userLogin.setUsername(userDetails.getId());
 		userLogin.setPassword(userDetails.getPassword());
 		userLogin.setEmail(userDetails.getEmail());

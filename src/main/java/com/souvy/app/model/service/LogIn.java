@@ -1,4 +1,4 @@
-package com.souvy.app.model;
+package com.souvy.app.model.service;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,6 +9,11 @@ import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 //import com.fasterxml.jackson.databind.ObjectMapper;
+import com.souvy.app.model.SessionDetails;
+import com.souvy.app.model.User;
+import com.souvy.app.model.UserLogin;
+import com.souvy.app.model.UserLoginRepo;
+import com.souvy.app.model.UserRepo;
 
 @Component
 public class LogIn {
@@ -26,16 +31,16 @@ public class LogIn {
 		//String response="";
 		userLogin.setUsername("not");
 		userInfo.setId("not");
-		if (userLoginRepo.existsById(user.username)) {
-			userLogin=userLoginRepo.findById(user.username).orElse(userLogin);
-			userInfo=userRepo.findById(user.username).orElse(userInfo);
+		if (userLoginRepo.existsById(user.getUsername())) {
+			userLogin=userLoginRepo.findById(user.getUsername()).orElse(userLogin);
+			userInfo=userRepo.findById(user.getUsername()).orElse(userInfo);
 		}
 		if(userLogin.getUsername().equals("not")) {
 			//response = new ObjectMapper().writeValueAsString("not valid user");
 			return (new ResponseEntity<> (userInfo,HttpStatus.BAD_REQUEST));
 			
 		}
-		else if(userLogin.password.equals(user.getPassword())) {
+		else if(userLogin.getPassword().equals(user.getPassword())) {
 			//response = new ObjectMapper().writeValueAsString(userInfo);
 			SessionDetails.sessionList.put(httpSession.hashCode(), user.getUsername());
 			return (new ResponseEntity<> (userInfo,HttpStatus.OK));

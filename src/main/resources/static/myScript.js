@@ -15,9 +15,11 @@ $(function() {
         	
         	$("#logInDiv").hide();
         	$("#userDetailsDiv").show();
+        	$("#searchDiv").toggle();
         	$("label#id").text(":   "+data.id);
         	$("label#name").text(":   "+data.name);
         	$("label#email").text(":   "+data.email);
+        	$("label#department").text(":   "+data.department);
         	
         },
         error: function(e){
@@ -49,9 +51,12 @@ $(function() {
             	
             	$("#logInDiv").toggle();
             	$("#userDetailsDiv").toggle();
+            	$("#searchDiv").toggle();
             	$("label#id").text(":   "+data.id);
             	$("label#name").text(":   "+data.name);
             	$("label#email").text(":   "+data.email);
+            	$("label#department").text(":   "+data.department);
+            	
             	
             },
             error: function(e){
@@ -81,13 +86,16 @@ $(function() {
 		var uPass= $("#PasswordSign").val();
 		var uSQues= $("#SQues").children("option").filter(":selected").val();
 		var uSAns= $("#SAnswer").val();
+		var udepartment= $("label#department").val();
 		var userInfo = JSON.stringify({
 			id: uId,
 			name: uName,
 			email: uEmail,
 			password: uPass,
 			sQues: uSQues,
-			sAns: uSAns
+			sAns: uSAns,
+			department: udepartment
+			
 		});
 		alert(userInfo);
 		$.ajax({
@@ -107,6 +115,49 @@ $(function() {
 		$("#logInDiv").toggle();
 	});
 	
+	
+	$("#search").click(function() {
+		var usearchQuery= $("#searchBar").val();
+		var usearchCriteria= $("#searchSelect").children("option").filter(":selected").val();
+		var searchData = JSON.stringify({
+			searchQuery: usearchQuery,
+			searchCriteria: usearchCriteria
+		});
+		alert(searchData);
+		$.ajax({
+            url: "search",
+            type:"POST",
+            dataType: 'json',
+            contentType: "application/json; charset=utf-8",
+            data: searchData,
+            cache: false,
+            timeout: 500000,
+            success: function(data) {
+            	alert(JSON.stringify(data));
+            	$.each(data, function(index, value){
+            		console.log(value);
+            		$("#searchResult").append("<p>"+index+". Id : "+value.id+" Name : "+value.name+" Email : " + data.email+ " Department : "+data.department+"</p>");
+            	});
+            	
+            }
+        });		
+	});
+	
+	$("#logOut").click(function() {
+		$.ajax({
+            url: "logout",
+            type:"POST",
+            cache: false,
+            timeout: 500000,
+            success: function(data) {
+            	alert(data);    	
+            	$("#logInDiv").toggle();
+            	$("#userDetailsDiv").toggle();
+            	$("#searchDiv").toggle();
+            }
+        });
+		
+	});
 	
 	$("#forgetPassword").click(function() {
 		$("#logInDiv").toggle();
