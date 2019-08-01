@@ -1,4 +1,4 @@
-package com.souvy.app.model.service;
+package com.souvy.app.service;
 
 import java.util.ArrayList;
 import java.util.List;

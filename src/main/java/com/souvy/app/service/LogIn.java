@@ -1,4 +1,4 @@
-package com.souvy.app.model.service;
+package com.souvy.app.service;
 
 import javax.servlet.http.HttpSession;
 

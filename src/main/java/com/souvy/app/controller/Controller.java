@@ -18,10 +18,10 @@ import com.souvy.app.model.SearchPojo;
 import com.souvy.app.model.User;
 import com.souvy.app.model.UserDetails;
 import com.souvy.app.model.UserLogin;
-import com.souvy.app.model.service.LogIn;
-import com.souvy.app.model.service.Logout;
-import com.souvy.app.model.service.SearchLogic;
-import com.souvy.app.model.service.SignUp;
+import com.souvy.app.service.LogIn;
+import com.souvy.app.service.Logout;
+import com.souvy.app.service.SearchLogic;
+import com.souvy.app.service.SignUp;
 
 
 @org.springframework.stereotype.Controller
