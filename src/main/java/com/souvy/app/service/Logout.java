@@ -13,7 +13,7 @@ public class Logout {
 	public String logoutLogic(HttpSession httpSession) {
 		if(SessionDetails.sessionList.containsKey(httpSession.hashCode())) {
 			SessionDetails.sessionList.remove(httpSession.hashCode());
-			//httpSession.invalidate();
+			httpSession.invalidate();
 			logoutMessage = "logged out successfully";
 		}
 		else {

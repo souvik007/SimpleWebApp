@@ -12,6 +12,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.souvy.app.model.SessionDetails;
 import com.souvy.app.model.User;
 import com.souvy.app.model.UserLogin;
+import com.souvy.app.model.UserLoginDetails;
 import com.souvy.app.model.UserLoginRepo;
 import com.souvy.app.model.UserRepo;
 
@@ -23,7 +24,7 @@ public class LogIn {
 	@Autowired
 	UserRepo userRepo;
 	@Autowired
-	UserLogin userLogin;
+	UserLoginDetails userLogin;
 	@Autowired
 	User userInfo;
 	
@@ -31,6 +32,7 @@ public class LogIn {
 		//String response="";
 		userLogin.setUsername("not");
 		userInfo.setId("not");
+		System.out.println(user.toString());
 		if (userLoginRepo.existsById(user.getUsername())) {
 			userLogin=userLoginRepo.findById(user.getUsername()).orElse(userLogin);
 			userInfo=userRepo.findById(user.getUsername()).orElse(userInfo);

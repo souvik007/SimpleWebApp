@@ -3,6 +3,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script type="text/javascript"
         src="webjars/jquery/3.4.1/jquery.min.js"></script>
 <script src="myScript.js"></script>
@@ -10,84 +11,122 @@
 <body>
 
 
-
+<div class="w3-container w3-text-sand w3-cyan w3-cell-middle w3-large w3-padding-32">
 	<div id="logInDiv">
-		<label>login</label> <br> <br> <label>User Name</label> <input
-			name="userName" id="userName" type="text"> <br> <br>
-		<label>Password</label> <input name="passWord" id="passWord" type="password"> <br> <br> 
-		<button id="login">Log In</button>  <button id="signup">Sign Up</button><br><br>
-		<p id="forgetPassword"> forget password </p>
+		<div class="w3-container w3-xxlarge "><p>Login</p>
+		</div>
+		<div class="w3-container">
+		<label>User Name</label> <input class="w3-input"
+			name="username" id="username" type="text"> <span class="error" id ="errorUsernameLogin"></span> <br>
+		<label>Password</label> <input class="w3-input" name="password" id="password" type="password"> <span class="error" id ="errorPasswordLogin"></span> <br> 
+		<button class="w3-btn w3-round-xxlarge w3-light-blue" id="login">Log In</button>  <button class="w3-btn w3-round-xxlarge w3-light-blue" id="signup">Sign Up</button><br>
+		<div class="w3-margin-left" id="forgetPassword" style="cursor: pointer"><p> forget password </p></div>
+    	<span id="details"></span>
     </div>
-	<br>
-	
-	
-	
+    </div>
 	<div id="signUpDiv" hidden="true">
-		<div>
-			<label>Id</label><input type="text" id ="Id"><br><br>
-			<label>Name</label><input type="text" id = "Name"><br><br>
-			<label>Email</label><input type="text" id = "Email"><br><br>
-			<label>Password</label><input type="password" id = "PasswordSign"><br><br>
+		<div class="w3-container w3-xxlarge "><p>Register</p></div>
+		<div class="w3-container">
+			<label>Id</label><input class="w3-input" type="text" id ="id"><span class="error" id ="errorId"></span>
+			<label>Name</label><input class="w3-input" type="text" id = "name"><span class="error" id ="errorName"></span>
+			<label>Email</label><input class="w3-input" type="text" id = "email"><span class="error" id ="errorEmail"></span>
+			<label>Phone Number</label><input class="w3-input" type="text" id="phoneNumber"><span class="error" id ="errorPhoneNumber"></span>
+			<label>Department</label><input class="w3-input" type="text" id="department"><span class="error" id ="errorDepartment"></span>
+			<label>Password</label><input class="w3-input" type="password" id = "passwordSign"><span class="error" id ="errorPassword"></span>
 			<label>Security Question</label>
-			<select id="SQues">
+			<select class="w3-select" id="sQues" >
 				<option value="What is your birth city?">What is your birth city?</option>
 				<option value="Who is your favourite actor?">Who is your favourite actor?</option>
 				<option value="What is your favourite number?">What is your favourite number?</option>
 				<option value="What is your favourite food?">What is your favourite food?</option>
 			</select>
-			<br><br>
-			<label>Answer</label><input type="text" id = "SAnswer"><br><br>
-			<button id="register">Register</button>
+			<label>Answer</label><input class="w3-input" type="text" id = "sAnswer"><span class="error" id ="errorSAns"></span>
+			<button class="w3-btn w3-round-xxlarge w3-light-blue w3-padding w3-margin"  id="register">Register</button>
+			<button class="w3-btn w3-round-xxlarge w3-light-blue w3-padding w3-margin"  id="backToLogin">back</button>
 		</div>
 	</div>
 	
 	
 	
 	
-	<div id="userDetailsDiv" hidden="true">
-			<label>Id</label><label id="id"></label><br><br>
-			<label>Name</label><label id="name"></label><br><br>
-			<label>Email</label><label id="email"></label><br><br>
-			<label>Department</label><label id="department"></label><br><br>
-			<button id="changePassword">Change Password </button>      <button id="logOut" >Log Out</button>
+	<div id="userDetailsDiv" hidden="true" class="w3-container">
+		<label>Id</label><label id="id"></label><br><br>
+		<label>Name</label><label id="name"></label><br><br>
+		<label>Email</label><label id="email"></label><br><br>
+		<label>Phone Number</label><label id="phoneNumber"></label><br><br>
+		<label>Department</label><label id="department"></label><br><br>
+	    <button class="w3-btn w3-round-xxlarge w3-light-blue"  id="logOut" >Log Out</button><br><br>
+	    <p></p>
+	    <div class="w3-bar">
+		<div class="w3-light-blue w3-panel w3-left w3-margin w3-padding-small" id="editDetails" style="cursor: pointer"><p> Edit user details </p></div>	
+		<div class="w3-light-blue w3-panel w3-left w3-margin w3-padding-small" id="changePassword" style="cursor: pointer"><p> Change Password </p></div>
+		</div>
+	</div>
+	
+	<div id="userDetailsEditDiv" hidden="true" class="w3-container">
+		<label>Id</label><input class="w3-input" id="idEdit" type="text" readonly="readonly"></input><span class="error" id ="errorIdUD"></span><br>
+		<label>Name</label><input class="w3-input" id="nameEdit" type="text"></input><span class="error" id ="errorNameUD"></span><br>
+		<label>Email</label><input class="w3-input" id="emailEdit" type="text"></input><span class="error" id ="errorEmailUD"></span><br>
+		<label>Phone Number</label><input class="w3-input" id="phoneNumberEdit" type="text"></input><span class="error" id ="errorPhoneNumberUD"></span><br>
+		<label>Department</label><input class="w3-input" id="departmentEdit" type="text"></input><span class="error" id ="errorDepartmentUD"></span><br>
+		<p id=updateUserStatus></p>
+		<button class="w3-btn w3-round-xxlarge w3-light-blue"  id="saveUserDetails">Save</button>
+		<button class="w3-btn w3-round-xxlarge w3-light-blue"  id="backToUserSetails">back</button>
 	</div>
 	
 	
-	
-    <div id="forgetPasswordDiv" hidden="true">
-    	<label>User Name</label> <input
-			name="userName" id="userNameF" type="text"> <br> <br>
+    <div id="forgetPasswordDiv" hidden="true" class="w3-container">
+    	<label>User Name</label> <input class="w3-input"name="username" id="usernameF" type="text">
 		<label>Security Question</label>
-		<select id="SQuesF">
+		<select class="w3-select" id="sQuesF">
 			<option value="What is your birth city?">What is your birth city?</option>
 			<option value="Who is your favourite actor?">Who is your favourite actor?</option>
 			<option value="What is your favourite number?">What is your favourite number?</option>
 			<option value="What is your favourite food?">What is your favourite food?</option>
 		</select>
-		<br><br>
-		<label>Answer</label><input type="text" id = "SAnswerF"><br><br>
-		<button id="submitF">Next</button>		
+		<br>
+		<label>Answer</label><input class="w3-input" type="text" id = "sAnsF"><br>
+		<button class="w3-btn w3-round-xxlarge w3-light-blue"  id="submitF">Next</button>
+		<button class="w3-btn w3-round-xxlarge w3-light-blue"  id="forgetPasswordToLogin">back</button>		
     </div>
     
     
-    <div id="generateNewPasswordDiv" hidden="true">
-    	<label>New Password</label><input type="password" id = "PasswordN"><br><br>
-    	<label>Confirm Password</label><input type="password" id = "PasswordNC"><br><br>
- 		<button id="submitGen">Submit</button>
+    <div id="generateNewPasswordDiv" hidden="true" class="w3-container">
+    	<label>New Password</label><input class="w3-input" type="password" id = "passwordN"><span class="error" id ="errorPasswordGen"></span><br><br>
+    	<label>Confirm Password</label><input class="w3-input" type="password" id = "passwordNC"><span class="error" id ="errorPasswordGenConf"></span><br><br>
+ 		<button class="w3-btn w3-round-xxlarge w3-light-blue"  id="submitGen">Submit</button>
     </div>
     
     
-    <div id="searchDiv" hidden="true">
-    	<label>Search other user</label>
-    	<label>Search with</label>
-    	<select id="searchSelect">
-			<option value="departemnt">Department</option>
-			<option value="email">Email</option>
-		</select>
-		<input id="searchBar" type="text">
-		<br><br>
-		<button id="search">Search</button>
+    <div class="w3-border-top w3-margin w3-container" id="searchDiv" hidden="true">
+    	<label >Search other user</label><br>
+    	<div class="w3-bar">
+	    	<div class="w3-left">
+		    	<label class="w3-left w3-margin">Search with</label>
+		    </div>
+	    	<div class="w3-left w3-margin">
+		    	<select class="w3-select " id="searchSelect">
+					<option value="departemnt">Department</option>
+					<option value="email">Email</option>
+				</select>
+			</div>
+			<div class="w3-left w3-margin">
+				<input class="w3-input" id="searchBar" type="text">
+			</div>
+		
+			<button class="w3-btn w3-round-xxlarge w3-light-blue w3-left w3-margin"  id="search">Search</button>
+			<button class="w3-btn w3-round-xxlarge w3-light-blue w3-left w3-margin"  id="searchClear">clear</button>
+		</div>
 		<div id="searchResult"></div>
+    </div>
+    
+    <div id="changePasswordDiv" hidden="true" class="w3-container">
+    	<label>Old Password</label><input class="w3-input" type="password" id = "passwordOld"><br><br>
+    	<label>New Password</label><input class="w3-input" type="password" id = "passwordChange"><span class="error" id ="errorPasswordChanege"></span><br><br>
+    	<label>Confirm Password</label><input class="w3-input" type="password" id = "passwordCangeConfirm"><span class="error" id ="errorPasswordChanegeConf"></span><br><br>
+ 		<button class="w3-btn w3-round-xxlarge w3-light-blue"  id="submitChangePass">Submit</button>
+ 		<button class="w3-btn w3-round-xxlarge w3-light-blue"  id="changePasswordToUserDetails">back</button>
+    </div>
     </div>
 </body>
 </html>

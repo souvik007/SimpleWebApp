@@ -1,5 +1,8 @@
 package com.souvy.app.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class SearchPojo {
 
 	private String searchQuery;

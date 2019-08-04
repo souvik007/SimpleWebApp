@@ -1,9 +1,11 @@
 package com.souvy.app.model;
 
 import org.springframework.stereotype.Component;
-@Component
 
+@Component
 public class UserDetails {
+	
+	
 	String id;
 	String name;
 	String email;
@@ -11,8 +13,10 @@ public class UserDetails {
 	String sQues;
 	String sAns;
 	String department;
+	String phoneNumber;
+
 	public UserDetails(String id, String name, String email, String password, String sQues, String sAns,
-			String department) {
+			String department, String phoneNumber) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -21,6 +25,13 @@ public class UserDetails {
 		this.sQues = sQues;
 		this.sAns = sAns;
 		this.department = department;
+		this.phoneNumber = phoneNumber;
+	}
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 	public String getId() {
 		return id;
@@ -69,8 +80,8 @@ public class UserDetails {
 	}
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", sQues=" + sQues
-				+ ", sAns=" + sAns + "]";
+		return "UserDetails [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", sQues="
+				+ sQues + ", sAns=" + sAns + ", department=" + department + ", phoneNumber=" + phoneNumber + "]";
 	}
 	
 	
